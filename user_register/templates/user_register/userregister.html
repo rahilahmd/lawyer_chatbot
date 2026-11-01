@@ -1,0 +1,405 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>USER REGISTER</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--       <center>-->
+<!--          <h2>USER REGISTRATION</h2>-->
+<!--          <table>-->
+<!--             <tr>-->
+<!--                <td>FULL NAME</td>-->
+<!--                <td><input type="text" name="full_name" required></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                <td>AGE</td>-->
+<!--                <td><input type="number" name="age"></td>-->
+<!--             </tr>-->
+<!--              <tr>-->
+<!--                <td>GENDER</td>-->
+<!--                <td>-->
+<!--                    <select name="gender">-->
+<!--                        <option value="">Select</option>-->
+<!--                        <option value="Male">Male</option>-->
+<!--                        <option value="Female">Female</option>-->
+<!--                        <option value="Other">Other</option>-->
+<!--                    </select>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--             <tr>-->
+<!--                <td>DATE OF BIRTH</td>-->
+<!--                <td><input type="date" name="dob"></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--    <td>ADDRESS</td>-->
+<!--    <td><textarea name="address" rows="3"></textarea></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                <td>EMAIL</td>-->
+<!--                <td><input type="email" name="email"></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                <td>PHONE NUMBER</td>-->
+<!--                <td><input type="text" name="phone_number"></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                <td>USER NAME</td>-->
+<!--                <td><input type="text" name="user_name" required></td>-->
+<!--             </tr>-->
+<!--              <tr>-->
+<!--                <td>PASSWORD</td>-->
+<!--                <td><input type="password" name="password" required></td>-->
+<!--             </tr>-->
+<!--             <tr>-->
+<!--                <td></td>-->
+<!--                <td><input type="submit" value="REGISTER"></td>-->
+<!--             </tr>-->
+<!--          </table>-->
+<!--       </center>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-bar { width: 4px; height: 38px; background: #c9a24d; }
+.brand-text { font-size: 28px; font-weight: 800; }
+
+/* HOME BUTTON */
+
+.home-btn {
+    position: absolute;
+    top: 26px;
+    right: 36px;
+}
+
+.home-btn a {
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.home-btn a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+}
+
+.card-wrapper {
+    display: flex;
+    width: 900px;
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 60px 120px rgba(0,0,0,0.85);
+}
+
+.info-panel {
+    width: 38%;
+    padding: 48px;
+    background: linear-gradient(180deg, rgba(201,162,77,0.95), rgba(139,106,62,0.95));
+    color: #111;
+}
+
+.form-panel {
+    width: 62%;
+    padding: 48px;
+    background: rgba(20,20,20,0.88);
+}
+
+.form-row { margin-bottom: 16px; }
+.form-row.split { display: flex; gap: 16px; }
+.form-row.split > div { flex: 1; }
+
+label { font-size: 13px; margin-bottom: 6px; display: block; }
+
+input, textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+.gender-group { display: flex; gap: 14px; }
+.gender-option input { display: none; }
+
+.gender-card {
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.gender-option input:checked + .gender-card {
+    border-color: #c9a24d;
+    background: rgba(201,162,77,0.18);
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* SUCCESS POPUP */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background: #1a1a1a;
+    padding: 40px;
+    width: 380px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    animation: popupFade 0.3s ease;
+}
+
+.popup-box h3 {
+    margin-bottom: 12px;
+    color: #c9a24d;
+}
+
+.popup-box p {
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: #ddd;
+}
+
+.popup-box button {
+    padding: 12px 28px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+}
+
+@keyframes popupFade {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<div class="home-btn">
+    <a href="/temp/home/" class="home-icon">⌂</a>
+</div>
+
+<div class="card-wrapper">
+
+<div class="info-panel">
+    <h2>Legal Registration</h2>
+    <p>Register to access trusted legal services.</p>
+</div>
+
+<div class="form-panel">
+<form method="POST">
+{% csrf_token %}
+
+<div class="form-row">
+<label>Full Name</label>
+<input type="text" name="full_name" pattern="^[A-Za-z ]+$" required>
+</div>
+
+<div class="form-row split">
+<div>
+<label>Age</label>
+<input type="number" name="age" id="age" readonly required>
+</div>
+
+<div>
+<label>Gender</label>
+<div class="gender-group">
+<label class="gender-option">
+<input type="radio" name="gender" value="Male" required>
+<div class="gender-card">♂ Male</div>
+</label>
+
+<label class="gender-option">
+<input type="radio" name="gender" value="Female">
+<div class="gender-card">♀ Female</div>
+</label>
+
+<label class="gender-option">
+<input type="radio" name="gender" value="Other">
+<div class="gender-card">⚧ Other</div>
+</label>
+</div>
+</div>
+</div>
+
+<div class="form-row">
+<label>Date of Birth</label>
+<input type="date" name="dob" id="dob" required>
+</div>
+
+<div class="form-row">
+<label>Address</label>
+<textarea name="address" rows="3" required></textarea>
+</div>
+
+<div class="form-row split">
+<div>
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div>
+<label>Phone Number</label>
+<input type="tel" name="phone_number" maxlength="10" required>
+</div>
+</div>
+
+<div class="form-row split">
+<div>
+<label>Username</label>
+<input type="text" name="user_name" pattern="[A-Za-z0-9_]{4,}" required>
+</div>
+
+<div>
+<label>Password</label>
+<input type="password" name="password" minlength="8" required>
+</div>
+</div>
+
+<button type="submit" class="btn">Create Account</button>
+</form>
+</div>
+</div>
+
+{% if success %}
+<div class="popup-overlay">
+<div class="popup-box">
+<h3>Registration Successful!</h3>
+<p>Your account has been created successfully.<br>
+Please login to continue.</p>
+<button onclick="redirectUser()">OK</button>
+</div>
+</div>
+
+<script>
+function redirectUser() {
+window.location.href = "{% url 'login' %}";
+}
+</script>
+{% endif %}
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+const dob = document.getElementById("dob");
+const ageInput = document.getElementById("age");
+const phone = document.querySelector('input[name="phone_number"]');
+const fullName = document.querySelector('input[name="full_name"]');
+const form = document.querySelector("form");
+
+fullName.addEventListener("input", () => {
+fullName.value = fullName.value.replace(/[^A-Za-z ]/g, "");
+});
+
+dob.addEventListener("change", () => {
+
+const birthDate = new Date(dob.value);
+const today = new Date();
+
+let age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+age--;
+}
+
+if (age < 18) {
+alert("You must be at least 18 years old.");
+dob.value = "";
+ageInput.value = "";
+return;
+}
+
+ageInput.value = age;
+
+});
+
+phone.addEventListener("input", () => {
+phone.value = phone.value.replace(/\D/g, "").slice(0,10);
+});
+
+form.addEventListener("submit", (e) => {
+if (!ageInput.value) {
+alert("Please select Date of Birth");
+e.preventDefault();
+}
+});
+
+});
+</script>
+
+</body>
+</html>

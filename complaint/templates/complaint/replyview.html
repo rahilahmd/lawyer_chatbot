@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Complaint Reply</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Body ===== */
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("/static/assets/img/bg/complaint.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px;
+    color: #fff;
+}
+
+/* ===== Brand ===== */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+}
+
+/* ===== Card ===== */
+.card {
+    width: 700px;
+    background: rgba(20,20,20,0.88);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+    padding: 40px;
+    position: relative;
+}
+
+/* ===== Home Icon ===== */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.home-icon:hover {
+    color: #e0c27a;
+}
+
+/* ===== Header ===== */
+.card h2 {
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+/* ===== Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #e0c27a;
+    width: 30%;
+    vertical-align: top;
+}
+
+td {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+}
+
+tr + tr td,
+tr + tr th {
+    padding-top: 20px;
+}
+
+/* Reply highlight */
+.reply {
+    border-left: 4px solid #c9a24d;
+}
+
+/* Footer */
+.footer-note {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+    .card {
+        width: 92%;
+        padding: 30px 20px;
+    }
+
+    th {
+        width: 35%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Brand -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<!-- Card -->
+<div class="card">
+    <a href="/temp/users/" class="home-icon" title="Home">⌂</a>
+
+    <h2>Complaint Response</h2>
+
+    <table>
+        <tr>
+            <th>Your Complaint</th>
+            <th>Admin Reply</th>
+        </tr>
+{% for i in xx %}
+        <tr>
+             <td>
+                {{ i.complaint }}
+            </td>
+            <td>{{ i.complaint_replay}}</td>
+        </tr>
+         {% endfor %}
+    </table>
+
+    <div class="footer-note">
+        Thank you for using Advocate.NOW — clarity, trust, and justice.
+    </div>
+</div>
+
+</body>
+</html>

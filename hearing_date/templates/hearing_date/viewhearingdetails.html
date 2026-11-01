@@ -1,0 +1,222 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>View Hearing Details</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<center>-->
+<!--    <h2>Hearing Details</h2>-->
+
+<!--    <table border="1" cellpadding="10">-->
+
+<!--        <tr>-->
+<!--            <th>Hearing Date </th>-->
+<!--            <th>Appointment ID</th>-->
+<!--            <th>Court Name</th>-->
+<!--            <th>Court Address</th>-->
+<!--        </tr>-->
+<!--{% for i in hr %}-->
+<!--      <tr>-->
+<!--    <td>{{ i.hearing_date_time }}</td>-->
+<!--    <td>{{ i.appointment_id }}</td>-->
+<!--    <td>{{ i.court_name }}</td>-->
+<!--    <td>{{ i.court_address }}</td>-->
+<!--           <td><a href="/hearing_date/upda/{{i.hearing_id}}">update</a> </td>-->
+<!--        </tr>-->
+<!--      </tr>-->
+<!--{% endfor %}-->
+
+<!--    </table>-->
+<!--</center>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Hearing Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("/static/assets/img/bg/calender.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 🔥 THIS LINE */
+    padding: 40px 20px;
+}
+
+/* Brand Header */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+}
+
+/* Glass card */
+.card-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+    background: rgba(20,20,20,0.88);
+    padding: 40px 30px;
+    position: relative;
+}
+
+/* Home icon */
+.home-icon {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.2s ease;
+}
+
+.home-icon:hover {
+    color: #e0c27a;
+    transform: translateY(-1px);
+}
+
+/* Card header */
+.card-wrapper h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: rgba(201,162,77,0.25);
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 14px;
+    vertical-align: top;
+    color: #fff;
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background: rgba(201,162,77,0.1);
+}
+
+/* Update link button */
+.update-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #c9a24d;
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.25s ease;
+}
+
+.update-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<div class="card-wrapper">
+    <a href="/manage_appointment_and_fee/view_ap/" class="home-icon" title="Home">⌂</a>
+
+    <h2>Hearing Details</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Hearing Date</th>
+                <th>Appointment ID</th>
+                <th>Court Name</th>
+                <th>Court Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in hr %}
+            <tr>
+                <td>{{ i.hearing_date_time }}</td>
+                <td>{{ i.appointment_id }}</td>
+                <td>{{ i.court_name }}</td>
+                <td>{{ i.court_address }}</td>
+                <td>
+                    <a href="/hearing_date/update_H/{{ i.hearing_id }}" class="update-btn">Update</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align:center; color:rgba(255,255,255,0.7); padding:20px;">
+                    No hearing details available
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

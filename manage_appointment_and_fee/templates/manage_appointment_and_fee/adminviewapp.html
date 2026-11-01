@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | View Appointments</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("https://images.unsplash.com/photo-1573495612937-7d71e1847b1b?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 120px 20px;
+}
+
+/* BRAND */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* CARD HEADER */
+.container h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-family: "Times New Roman", serif;
+}
+
+/* APPOINTMENT CARD */
+.appointment-card {
+    background: rgba(20,20,20,0.9);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* INFO */
+.info {
+    flex: 1;
+}
+
+.info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #e0c27a;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 20px;
+    font-size: 14px;
+}
+
+.info-grid span {
+    opacity: 0.85;
+}
+
+/* SIDE */
+.side {
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* STATUS */
+.status {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pending { background: rgba(241,196,15,0.9); color:#111; }
+.accepted { background: #2ecc71; color:#111; }
+.rejected { background: #e74c3c; color:#fff; }
+
+/* HOME ICON */
+.home-icon {
+    position: fixed;
+    top: 28px;
+    right: 28px;
+    font-size: 22px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.home-icon:hover {
+    color: #e0c27a;
+}
+
+/* NO DATA */
+.no-data {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .appointment-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .side {
+        width: 100%;
+        align-items: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BRAND -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<a href="/temp/admin/" class="home-icon">⌂</a>
+
+<div class="container">
+    <h2>Appointments</h2>
+
+    {% for i in av %}
+    <div class="appointment-card">
+
+        <!-- INFO -->
+        <div class="info">
+            <h3>{{ i.full_name }}</h3>
+
+            <div class="info-grid">
+                <span><b>Phone:</b> {{ i.phone_number }}</span>
+                <span><b>Email:</b> {{ i.email }}</span>
+                <span><b>Service:</b> {{ i.service_type }}</span>
+                <span><b>Lawyer:</b> {{ i.lawyer_id }}</span>
+                <span><b>Date:</b> {{ i.appointment_date }}</span>
+                <span><b>Time:</b> {{ i.appointment_time }}</span>
+                <span><b>User:</b> {{ i.user_id }}</span>
+                <span><b>Case:</b> {{ i.case_summary }}</span>
+            </div>
+        </div>
+
+        <!-- SIDE -->
+        <div class="side">
+            <span class="status {{ i.status|lower }}">
+                {{ i.status }}
+            </span>
+        </div>
+
+    </div>
+    {% empty %}
+        <div class="no-data">No appointments found</div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,534 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Advocate.NOW | Submit Petition</title>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--<style>-->
+<!--* {-->
+<!--    box-sizing: border-box;-->
+<!--    margin: 0;-->
+<!--    padding: 0;-->
+<!--}-->
+
+<!--body {-->
+<!--    font-family: "Segoe UI", system-ui, Arial, sans-serif;-->
+<!--    min-height: 100vh;-->
+<!--    background:-->
+<!--    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),-->
+<!--    url("/static/assets/img/bg/complaint.jpg");-->
+<!--background-size: cover;-->
+<!--background-position: center;-->
+<!--    color: #fff;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    justify-content: center;-->
+<!--    position: relative;-->
+<!--}-->
+
+<!--/* BRAND HEADER */-->
+<!--.brand-header {-->
+<!--    position: absolute;-->
+<!--    top: 26px;-->
+<!--    left: 36px;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 14px;-->
+<!--    z-index: 10;-->
+<!--}-->
+
+<!--.brand-bar {-->
+<!--    width: 4px;-->
+<!--    height: 38px;-->
+<!--    background: #c9a24d;-->
+<!--    border-radius: 2px;-->
+<!--}-->
+
+<!--.brand-text {-->
+<!--    font-size: 30px;-->
+<!--    font-weight: 800;-->
+<!--    letter-spacing: 0.6px;-->
+<!--}-->
+
+<!--/* CARD */-->
+<!--.card-wrapper {-->
+<!--    display: flex;-->
+<!--    width: 900px;-->
+<!--    border-radius: 24px;-->
+<!--    overflow: hidden;-->
+<!--    backdrop-filter: blur(20px);-->
+<!--    box-shadow: 0 60px 120px rgba(0,0,0,0.85);-->
+<!--}-->
+
+<!--/* LEFT INFO */-->
+<!--.info-panel {-->
+<!--    width: 38%;-->
+<!--    padding: 48px;-->
+<!--    background: linear-gradient(-->
+<!--        180deg,-->
+<!--        rgba(201,162,77,0.95),-->
+<!--        rgba(139,106,62,0.95)-->
+<!--    );-->
+<!--    color: #111;-->
+<!--}-->
+
+<!--.info-panel h2 {-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--    font-size: 28px;-->
+<!--    margin-bottom: 18px;-->
+<!--}-->
+
+<!--.info-panel p {-->
+<!--    font-size: 14px;-->
+<!--    line-height: 1.6;-->
+<!--    opacity: 0.9;-->
+<!--}-->
+
+<!--/* RIGHT FORM */-->
+<!--.form-panel {-->
+<!--    width: 62%;-->
+<!--    padding: 48px;-->
+<!--    background: rgba(20,20,20,0.88);-->
+<!--    position: relative;-->
+<!--}-->
+
+<!--.form-panel h3 {-->
+<!--    font-size: 22px;-->
+<!--    margin-bottom: 26px;-->
+<!--    text-transform: uppercase;-->
+<!--    letter-spacing: 0.6px;-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--}-->
+
+<!--/* HOME ICON inside card */-->
+<!--.home-icon {-->
+<!--    position: absolute;-->
+<!--    top: 28px;-->
+<!--    right: 28px;-->
+<!--    font-size: 22px;-->
+<!--    font-weight: 700;-->
+<!--    text-decoration: none;-->
+<!--    color: rgba(255,255,255,0.85);-->
+<!--    transition: color 0.25s ease, transform 0.2s ease;-->
+<!--    z-index: 5;-->
+<!--}-->
+
+<!--.home-icon:hover {-->
+<!--    color: #e0c27a;-->
+<!--    transform: translateY(-1px);-->
+<!--}-->
+
+<!--/* FORM FIELDS */-->
+<!--.form-row {-->
+<!--    margin-bottom: 16px;-->
+<!--}-->
+
+<!--label {-->
+<!--    font-size: 13px;-->
+<!--    margin-bottom: 6px;-->
+<!--    display: block;-->
+<!--    opacity: 0.85;-->
+<!--}-->
+
+<!--textarea {-->
+<!--    width: 100%;-->
+<!--    padding: 14px;-->
+<!--    border-radius: 12px;-->
+<!--    font-size: 14px;-->
+<!--    border: 1px solid rgba(255,255,255,0.18);-->
+<!--    background: rgba(255,255,255,0.08);-->
+<!--    color: #fff;-->
+<!--    resize: none;-->
+<!--}-->
+
+<!--textarea:focus {-->
+<!--    outline: none;-->
+<!--    border-color: #c9a24d;-->
+<!--}-->
+
+<!--/* BUTTON */-->
+<!--.btn {-->
+<!--    width: 100%;-->
+<!--    padding: 15px;-->
+<!--    margin-top: 12px;-->
+<!--    border: none;-->
+<!--    border-radius: 14px;-->
+<!--    background: linear-gradient(135deg, #c9a24d, #8b6a3e);-->
+<!--    color: #111;-->
+<!--    font-size: 16px;-->
+<!--    font-weight: 700;-->
+<!--    cursor: pointer;-->
+<!--}-->
+
+<!--.btn:hover {-->
+<!--    filter: brightness(1.06);-->
+<!--}-->
+
+<!--/* FOOTER */-->
+<!--.footer-text {-->
+<!--    margin-top: 22px;-->
+<!--    font-size: 13px;-->
+<!--    text-align: center;-->
+<!--    opacity: 0.85;-->
+<!--}-->
+
+<!--.footer-text a {-->
+<!--    color: #e0c27a;-->
+<!--    text-decoration: none;-->
+<!--    font-weight: 600;-->
+<!--}-->
+
+<!--/* RESPONSIVE */-->
+<!--@media (max-width: 900px) {-->
+<!--    .card-wrapper {-->
+<!--        flex-direction: column;-->
+<!--        width: 94%;-->
+<!--    }-->
+<!--    .info-panel,-->
+<!--    .form-panel {-->
+<!--        width: 100%;-->
+<!--    }-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="brand-header">-->
+<!--    <div class="brand-bar"></div>-->
+<!--    <div class="brand-text">Advocate.NOW</div>-->
+<!--</div>-->
+
+<!--<div class="card-wrapper">-->
+
+<!--    &lt;!&ndash; LEFT PANEL &ndash;&gt;-->
+<!--    <div class="info-panel">-->
+<!--        <h2>Petition</h2>-->
+<!--        <p>-->
+<!--            Advocate.NOW keeps your complaint secure and ready for review, so you can track updates and get timely support.-->
+<!--        </p>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; RIGHT PANEL &ndash;&gt;-->
+<!--    <div class="form-panel">-->
+<!--        &lt;!&ndash; Home button inside card &ndash;&gt;-->
+<!--        <a href="/temp/users/" class="home-icon" title="Home">⌂</a>-->
+
+<!--        <h3>Submit complaint</h3>-->
+
+<!--        <form method="POST">-->
+<!--            {% csrf_token %}-->
+
+<!--            <div class="form-row">-->
+<!--            <label for="complaint">Your Complaint</label>-->
+<!--            <textarea id="complaint" name="complaint" placeholder="Describe the issue here..." required></textarea>-->
+<!--        </div>-->
+
+<!--        <button type="submit" class="btn">Submit</button>-->
+<!--    </form>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>
+neww-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Submit Petition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --void: #050a14;
+    --cyan: #4de3ff;
+    --gold: #e3b95b;
+    --text: #e8eef7;
+    --muted: #8fa1b8;
+    --line: rgba(120,160,210,0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    font-family: "Sora", "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(900px 500px at 15% 10%, rgba(77,227,255,0.14), transparent 60%),
+        radial-gradient(800px 500px at 90% 90%, rgba(227,185,91,0.12), transparent 60%),
+        var(--void);
+    background-attachment: fixed;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    overflow-x: hidden;
+    color-scheme: dark;
+}
+
+/* ===== Background ===== */
+.floor {
+    position: fixed; left: -25%; right: -25%; bottom: 0; height: 48vh;
+    background:
+        repeating-linear-gradient(90deg, rgba(77,227,255,0.22) 0 1px, transparent 1px 70px),
+        repeating-linear-gradient(0deg, rgba(77,227,255,0.22) 0 1px, transparent 1px 70px);
+    transform: perspective(420px) rotateX(62deg);
+    transform-origin: bottom;
+    -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+            mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+    animation: flow 4s linear infinite;
+    pointer-events: none;
+}
+@keyframes flow { to { background-position: 0 70px, 0 70px; } }
+
+.glyphs { position: fixed; inset: 0; pointer-events: none; }
+.glyphs span {
+    position: fixed; bottom: -40px;
+    font-family: "Fraunces", Georgia, serif; font-size: 28px;
+    color: var(--gold); opacity: 0;
+    animation: drift 14s linear infinite;
+}
+.glyphs span:nth-child(1) { left: 6%;  animation-delay: 0s; }
+.glyphs span:nth-child(2) { left: 24%; animation-delay: 3s; color: var(--cyan); }
+.glyphs span:nth-child(3) { left: 48%; animation-delay: 6s; }
+.glyphs span:nth-child(4) { left: 66%; animation-delay: 9s; color: var(--cyan); }
+.glyphs span:nth-child(5) { left: 84%; animation-delay: 2s; }
+.glyphs span:nth-child(6) { left: 94%; animation-delay: 7s; color: var(--cyan); }
+@keyframes drift {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    15% { opacity: .35; } 85% { opacity: .25; }
+    100% { transform: translateY(-105vh) rotate(25deg); opacity: 0; }
+}
+
+/* ===== Hero (left) ===== */
+.hero {
+    grid-column: 1; grid-row: 1;
+    position: relative; z-index: 1;
+    padding: 48px 64px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.logo { font-family: "Fraunces", Georgia, serif; font-size: 26px; color: #fff; text-decoration: none; margin-bottom: 8px; }
+.logo span { color: var(--gold); }
+
+.scales { width: min(340px, 80%); height: auto; overflow: visible; }
+.scales .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.6s ease-out forwards; }
+.scales .beam { transform-origin: 160px 62px; animation: sway 6s ease-in-out 1.4s infinite; }
+.scales .pan  { animation: unsway 6s ease-in-out 1.4s infinite; }
+.scales .pan.l { transform-origin: 40px 62px; }
+.scales .pan.r { transform-origin: 280px 62px; }
+.scales .pulse { animation: glow 3s ease-in-out infinite; }
+@keyframes draw  { to { stroke-dashoffset: 0; } }
+@keyframes sway   { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+@keyframes unsway { 0%,100% { transform: rotate(7deg); }  50% { transform: rotate(-7deg); } }
+@keyframes glow   { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+.hero h1 {
+    font-family: "Fraunces", Georgia, serif; font-weight: 600;
+    font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; margin-top: 12px;
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span { display: block; animation: reveal .9s cubic-bezier(.2,.8,.2,1) both; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .15s; color: var(--cyan); }
+.hero p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 42ch; margin-top: 10px; animation: fadein 1s .5s both; }
+@keyframes reveal { from { transform: translateY(110%); } to { transform: none; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Card (right) ===== */
+.panel { grid-column: 2; grid-row: 1; position: relative; z-index: 1; display: flex; justify-content: center; padding: 48px 32px; }
+
+.home-btn {
+    position: fixed; top: 26px; right: 32px; z-index: 5;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 4px 2px; font-size: 13px; font-weight: 500; letter-spacing: .2px;
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+}
+.home-btn svg { width: 16px; height: 16px; stroke: currentColor; }
+.home-btn:hover { color: var(--text); border-bottom-color: var(--gold); }
+
+.card {
+    width: 100%; max-width: 440px;
+    padding: 38px 34px;
+    border-radius: 20px; border: 1px solid transparent;
+    background:
+        linear-gradient(rgba(10,17,33,0.82), rgba(10,17,33,0.82)) padding-box,
+        linear-gradient(135deg, rgba(77,227,255,0.65), rgba(255,255,255,0.08) 45%, rgba(227,185,91,0.65)) border-box;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    animation: rise .8s .3s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+.card h2 { font-family: "Fraunces", Georgia, serif; font-size: 30px; font-weight: 600; margin-bottom: 6px; }
+.sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: #c7d3e3; }
+
+textarea {
+    display: block; width: 100%; min-height: 190px; resize: vertical;
+    padding: 14px 15px; font: inherit; font-size: 14px; line-height: 1.6; color: var(--text);
+    background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 12px;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+textarea::placeholder { color: #667891; }
+textarea:focus {
+    outline: none; border-color: var(--cyan); background: rgba(77,227,255,0.06);
+    box-shadow: 0 0 0 4px rgba(77,227,255,0.14), 0 0 24px rgba(77,227,255,0.18);
+}
+.count { margin: 8px 0 22px; text-align: right; font-size: 12px; color: #7f92a8; }
+
+.btn {
+    width: 100%; padding: 14px; font: inherit; font-size: 15px; font-weight: 600;
+    color: #1a1300; border: none; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, var(--gold), #f3d58b 50%, var(--gold));
+    background-size: 200% 100%;
+    transition: box-shadow .25s, transform .1s;
+}
+.btn:hover { box-shadow: 0 0 28px rgba(227,185,91,0.5); background-position: 100% 0; }
+.btn:active { transform: translateY(1px); }
+
+.secure { margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.secure svg { width: 14px; height: 14px; stroke: var(--gold); }
+
+a:focus-visible, .btn:focus-visible, .home-btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+
+/* ===== Filing animation ===== */
+.filed {
+    position: fixed; inset: 0; z-index: 30;
+    display: grid; place-items: center; text-align: center;
+    background: rgba(5,10,20,0.88); backdrop-filter: blur(8px);
+    opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.filed.on { opacity: 1; pointer-events: auto; }
+.filed svg { width: 110px; height: 110px; margin-bottom: 18px; overflow: visible; }
+.filed .sheet, .filed .tick, .filed .ln { stroke-dasharray: 200; stroke-dashoffset: 200; }
+.filed.on .sheet { animation: draw 1s .1s ease-out forwards; }
+.filed.on .ln    { animation: draw .6s .7s ease-out forwards; }
+.filed.on .ln.b  { animation-delay: .9s; }
+.filed.on .tick  { animation: draw .5s 1.3s ease-out forwards; }
+.filed h3 { font-family: "Fraunces", Georgia, serif; font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+.filed p { color: var(--muted); font-size: 14px; opacity: 0; transition: opacity .5s; }
+.filed p.on { opacity: 1; }
+
+/* ===== Responsive ===== */
+@media (max-width: 760px) {
+    body { grid-template-columns: 1fr; align-items: start; }
+    .hero, .panel { grid-column: 1; grid-row: auto; }
+    .home-btn { top: 18px; right: 20px; }
+    .hero { padding: 28px 24px 0; align-items: center; text-align: center; }
+    .scales { width: 150px; }
+    .hero h1, .hero p { display: none; }
+    .panel { padding: 16px 20px 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .scales .draw { stroke-dashoffset: 0; }
+    .glyphs { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="floor" aria-hidden="true"></div>
+<div class="glyphs" aria-hidden="true"><span>&sect;</span><span>&para;</span><span>&sect;</span><span>&para;</span><span>&sect;</span><span>&para;</span></div>
+
+<a href="/temp/users/" class="home-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
+    Home
+</a>
+
+<section class="hero">
+    <a href="/temp/users/" class="logo">Advocate<span>.</span>NOW</a>
+
+    <svg class="scales" viewBox="0 0 320 300" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g stroke="#e3b95b" stroke-width="3">
+            <path class="draw" d="M120 285h80M135 285v-12h50v12M160 273V62"/>
+            <g class="beam">
+                <path class="draw" d="M40 62h240"/>
+                <g class="pan l">
+                    <path stroke="#4de3ff" stroke-width="1.5" d="M40 62L8 170M40 62L72 170"/>
+                    <path class="pulse" stroke="#4de3ff" d="M2 170h76c0 26-17 38-38 38S2 196 2 170z" fill="rgba(77,227,255,0.12)"/>
+                </g>
+                <g class="pan r">
+                    <path stroke="#4de3ff" stroke-width="1.5" d="M280 62l-32 108M280 62l32 108"/>
+                    <path class="pulse" stroke="#4de3ff" d="M242 170h76c0 26-17 38-38 38s-38-12-38-38z" fill="rgba(77,227,255,0.12)"/>
+                </g>
+            </g>
+            <circle cx="160" cy="48" r="11" fill="#050a14"/>
+            <circle cx="160" cy="62" r="4" fill="#e3b95b"/>
+        </g>
+    </svg>
+
+    <h1>
+        <span class="line"><span>Your petition,</span></span>
+        <span class="line"><span>filed securely.</span></span>
+    </h1>
+    <p>Advocate.NOW keeps your complaint secure and ready for review, so you can track updates and get timely support.</p>
+</section>
+
+<main class="panel">
+    <div class="card">
+        <h2>Submit complaint</h2>
+        <p class="sub">Describe what happened in your own words.</p>
+
+        <form method="POST" id="petitionForm">
+            {% csrf_token %}
+
+            <label for="complaint">Your complaint</label>
+            <textarea id="complaint" name="complaint" placeholder="Describe the issue here: what happened, when and where, and who was involved." required></textarea>
+            <div class="count" id="count">0 characters</div>
+
+            <button type="submit" class="btn">Submit petition</button>
+        </form>
+
+        <div class="secure">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            Your complaint is kept private and reviewed securely.
+        </div>
+    </div>
+</main>
+
+<div class="filed" id="filed" role="status" aria-live="polite">
+    <div>
+        <svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="sheet" d="M16 6h22l12 12v36a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4z" stroke="#e3b95b" stroke-width="2.5"/>
+            <path class="ln" d="M22 28h20" stroke="#4de3ff" stroke-width="2.5"/>
+            <path class="ln b" d="M22 36h14" stroke="#4de3ff" stroke-width="2.5"/>
+            <path class="tick" d="M24 47l6 6 11-12" stroke="#e3b95b" stroke-width="3.5"/>
+        </svg>
+        <h3>Filing your petition</h3>
+        <p id="filedMsg">Your complaint has been received and is ready for review.</p>
+    </div>
+</div>
+
+<script>
+    const area = document.getElementById("complaint");
+    const count = document.getElementById("count");
+    area.addEventListener("input", function () {
+        const n = area.value.length;
+        count.textContent = n + (n === 1 ? " character" : " characters");
+    });
+
+    const form = document.getElementById("petitionForm");
+    const filed = document.getElementById("filed");
+    let sending = false;
+    form.addEventListener("submit", function (e) {
+        if (sending || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        e.preventDefault();
+        sending = true;
+        filed.classList.add("on");
+        setTimeout(function () { document.getElementById("filedMsg").classList.add("on"); }, 1500);
+        setTimeout(function () { form.submit(); }, 2600);
+    });
+</script>
+</body>
+</html>

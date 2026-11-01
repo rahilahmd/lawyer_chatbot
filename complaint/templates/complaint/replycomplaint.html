@@ -1,0 +1,231 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>View Complaints</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<center>-->
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>Complaint</th>-->
+<!--        <th>Complaint id</th>-->
+<!--        <th>User id</th>-->
+<!--        <th>Action</th>-->
+<!--    </tr>-->
+
+<!--    {% for i in c %}-->
+<!--    <tr>-->
+<!--        <td>{{ i.complaint }}</td>-->
+<!--        <td>{{ i.complaint_id }}</td>-->
+<!--        <td>{{ i.user_id }}</td>-->
+<!--        <td><a href="/complaint/repl/{{ i.complaint_id }}">Reply</a></td>-->
+<!--    </tr>-->
+
+<!--    {% endfor %}-->
+
+<!--</table>-->
+<!--</center>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Complaints List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BODY */
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+        url("/static/assets/img/bg/complaint.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    padding: 120px 20px;
+}
+
+/* BRAND */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HEADER */
+.container h2 {
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
+}
+
+/* COMPLAINT CARD */
+.complaint-card {
+    background: rgba(20,20,20,0.9);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* INFO */
+.info {
+    flex: 1;
+}
+
+.info p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.meta span b {
+    color: #e0c27a;
+}
+
+/* ACTION */
+.action {
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* REPLY BUTTON */
+.reply-btn {
+    padding: 10px 26px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    color: #111;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.reply-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+/* HOME ICON */
+.home-icon {
+    position: fixed;
+    top: 24px;
+    right: 26px;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.home-icon:hover {
+    color: #e0c27a;
+}
+
+/* NO DATA */
+.no-data {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .complaint-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .action {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BRAND -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<a href="/temp/admin/" class="home-icon" title="Home">⌂</a>
+
+<div class="container">
+    <h2>Complaints List</h2>
+
+    {% for i in co %}
+    <div class="complaint-card">
+
+        <!-- INFO -->
+        <div class="info">
+            <p>{{ i.complaint }}</p>
+
+            <div class="meta">
+                <span><b>Complaint ID:</b> {{ i.complaint_id }}</span>
+                <span><b>User:</b> {{ i.user.full_name }}</span>
+            </div>
+        </div>
+
+        <!-- ACTION -->
+        <div class="action">
+            <a href="/complaint/post_rep/{{ i.complaint_id }}" class="reply-btn">
+                Reply
+            </a>
+        </div>
+
+    </div>
+    {% empty %}
+        <div class="no-data">No complaints found</div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

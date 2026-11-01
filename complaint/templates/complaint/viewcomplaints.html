@@ -1,0 +1,201 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--	<meta charset="utf-8">-->
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--	<title>View Complaint</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	<center>-->
+<!--		<table border="1" cellpadding="8">-->
+<!--			<tr>-->
+
+<!--				<th>Complaint</th>-->
+<!--				<th>Reply</th>-->
+<!--			</tr>-->
+<!--			<tr>-->
+
+<!--				<td></td>-->
+<!--				<td></td>-->
+
+<!--			</tr>-->
+<!--		</table>-->
+<!--	</center>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | View Complaints</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BODY / BACKGROUND ===== */
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+
+    /* Legal themed background */
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("/static/assets/img/bg/complaint.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px;   /* pushes card below brand */
+}
+
+/* ===== BRAND HEADER ===== */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+}
+
+/* ===== CARD ===== */
+.card {
+    width: 90%;
+    max-width: 950px;
+    background: rgba(20,20,20,0.88);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.85);
+    padding: 40px;
+    color: #ffffff;
+}
+
+/* ===== CARD HEADER ===== */
+.card h2 {
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: rgba(201,162,77,0.25);
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    font-size: 14px;
+    vertical-align: top;
+}
+
+th {
+    font-weight: 700;
+    color: #e0c27a;
+}
+
+tbody tr:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* ===== STATUS ===== */
+.pending {
+    color: #e0c27a;
+    font-weight: 600;
+}
+
+.no-data {
+    text-align: center;
+    padding: 25px;
+    opacity: 0.85;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BRAND -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<!-- CARD -->
+<div class="card">
+    <h2>View Complaints</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Complaint</th>
+                <th>Reply</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in c %}
+            <tr>
+                <td>{{ i.complaint }}</td>
+                <td>
+                    {% if i.reply %}
+                        {{ i.reply }}
+                    {% else %}
+                        <span class="pending">Pending</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2" class="no-data">
+                    No complaints found
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

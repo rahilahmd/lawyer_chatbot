@@ -1,0 +1,347 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>APPOINTMENT & FEES</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <center>-->
+<!--            <table>-->
+
+<!--                <tr>-->
+<!--                    <td>FULL NAME</td>-->
+<!--                    <td><input type="text" name="full_name"></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td>EMAIL</td>-->
+<!--                    <td><input type="email" name="email"></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td>PHONE NUMBER</td>-->
+<!--                    <td><input type="text" name="phone_number"></td>-->
+<!--                </tr>-->
+<!--                 <tr>-->
+<!--                    <td>CASE SUMMARY</td>-->
+<!--                    <td><textarea name="case_summary" rows="4" cols="25"></textarea></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td>APPOINTMENT DATE</td>-->
+<!--                    <td><input type="date" name="appointment_date"></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td>APPOINTMENT TIME</td>-->
+<!--                    <td><input type="time" name="appointment_time"></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td>SERVICE TYPE</td>-->
+<!--                    <td>-->
+<!--                        <select name="service_type" onchange="calculateFees()">-->
+<!--                            <option value="">Select Service</option>-->
+<!--                            <option value="100">General Consultation </option>-->
+<!--                            <option value="150">Follow-up Visit </option>-->
+<!--                            <option value="200">Emergency Appointment </option>-->
+<!--                        </select>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+<!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td>TOTAL FEES</td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td><input type="text" id="fees" name="fees" readonly></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+
+<!--                <tr>-->
+<!--                    <td></td>-->
+<!--                    <td><input type="submit" value="BOOK APPOINTMENT"></td>-->
+<!--                </tr>-->
+
+<!--            </table>-->
+<!--        </center>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Book Appointment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("https://images.unsplash.com/photo-1573495612937-7d71e1847b1b?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Brand Header */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.card-wrapper {
+    display: flex;
+    width: 900px;
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+    background: rgba(20,20,20,0.88);
+}
+
+.info-panel {
+    width: 38%;
+    padding: 48px;
+    background: linear-gradient(180deg, rgba(201,162,77,0.95), rgba(139,106,62,0.95));
+    color: #111;
+}
+
+.info-panel h2 {
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.info-panel p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.form-panel {
+    width: 62%;
+    padding: 48px;
+    background: rgba(20,20,20,0.88);
+    position: relative;
+}
+
+.home-icon {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.form-panel h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #e0c27a;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #c9a24d;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(1.06);
+}
+
+/* ===== POPUP MODAL ===== */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    z-index: 999;
+}
+
+.popup-box {
+    background: #1c1c1c;
+    padding: 30px;
+    width: 380px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    animation: scaleUp 0.3s ease;
+}
+
+.popup-box h3 {
+    color: #c9a24d;
+    margin-bottom: 12px;
+}
+
+.popup-box p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.popup-box button {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes scaleUp {
+    from {transform: scale(0.8);}
+    to {transform: scale(1);}
+}
+
+@media (max-width: 900px) {
+    .card-wrapper { flex-direction: column; width: 95%; }
+    .info-panel, .form-panel { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<div class="card-wrapper">
+
+<div class="info-panel">
+    <h2>Book Your Appointment</h2>
+    <p>
+        Fill in the required details carefully to schedule an appointment.
+        Your request will be sent to the advocate for approval.
+    </p>
+</div>
+
+<div class="form-panel">
+    <a href="/register_lawyer/user_vie/" class="home-icon">⌂</a>
+    <h2>Book Appointment</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Phone Number</label>
+        <input type="text" name="phone_number" maxlength="10"
+               pattern="[0-9]{10}" required
+               oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+        <label>Case Summary</label>
+        <textarea name="case_summary" required></textarea>
+
+        <label>Appointment Date</label>
+        <input type="date" name="appointment_date" id="appointment_date" required>
+
+        <label>Appointment Time</label>
+        <input type="time" name="appointment_time" id="appointment_time" required>
+
+        <label>Service Type</label>
+        <select name="service_type" required>
+            <option value="">Select Service</option>
+            <option value="general-consult">General Consultation</option>
+            <option value="follow-up visit">Follow-up Visit</option>
+            <option value="Emergency">Emergency Appointment</option>
+        </select>
+
+        <button type="submit" class="btn">Book Appointment</button>
+    </form>
+</div>
+
+</div>
+
+<!-- ===== SUCCESS POPUP ===== -->
+{% if success %}
+<div class="popup-overlay">
+    <div class="popup-box">
+        <h3>Appointment Booked!</h3>
+        <p>Your appointment has been successfully booked.<br>
+        Please wait for the lawyer's approval.</p>
+        <button onclick="redirectUser()">OK</button>
+    </div>
+</div>
+
+<script>
+function redirectUser() {
+    window.location.href = "{% url 'appviewuser' %}";
+}
+</script>
+{% endif %}
+
+<script>
+// Date restriction
+const dateInput = document.getElementById("appointment_date");
+const today = new Date().toISOString().split("T")[0];
+dateInput.setAttribute("min", today);
+</script>
+
+</body>
+</html>

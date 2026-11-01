@@ -1,0 +1,213 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>REPLY COMPLAINT</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<form method="POST" >-->
+<!--    {% csrf_token %}-->
+<!--    <center>-->
+<!--        <table border="0" cellpadding="10">-->
+
+<!--            <tr>-->
+<!--                <td>REPLY</td>-->
+<!--                <td>-->
+<!--                    <textarea name="reply" rows="5" cols="25" required></textarea>-->
+<!--                </td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--                <td></td>-->
+<!--                <td>-->
+<!--                    <input type="submit" value="SUBMIT REPLY">-->
+<!--                </td>-->
+<!--            </tr>-->
+
+<!--        </table>-->
+<!--    </center>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Reply Complaint</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Body / Background ===== */
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+
+    /* Dark legal themed background */
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+       url("/static/assets/img/bg/complaint.jpg");
+    background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px;   /* pushes card below brand */
+}
+
+/* ===== Brand Header ===== */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #fff;
+}
+
+/* ===== Glass Card ===== */
+.card {
+    width: 420px;
+    background: rgba(20,20,20,0.88);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+    padding: 40px 30px;
+    color: #fff;
+    position: relative;
+}
+
+/* ===== Home Icon ===== */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.2s ease;
+}
+
+.home-icon:hover {
+    color: #e0c27a;
+    transform: translateY(-1px);
+}
+
+/* ===== Header ===== */
+.card h2 {
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+/* ===== Form ===== */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #e0c27a;
+}
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+}
+
+textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+textarea:focus {
+    border-color: #c9a24d;
+}
+
+/* ===== Button ===== */
+.btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #c9a24d, #8b6a3e);
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.25s ease;
+}
+
+.btn:hover {
+    filter: brightness(1.06);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Brand -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<!-- Card -->
+<div class="card">
+    <a href="/temp/admin/" class="home-icon" title="Home">⌂</a>
+
+    <h2>Reply to Complaint</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="reply">Your Reply</label>
+        <textarea name="reply" id="reply" placeholder="Write a clear and respectful response..." required></textarea>
+
+        <button type="submit" class="btn">Submit Reply</button>
+    </form>
+</div>
+
+</body>
+</html>

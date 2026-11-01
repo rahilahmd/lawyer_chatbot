@@ -1,0 +1,682 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>View Lawyer Profile</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<center>-->
+<!--    <table border="1" cellpadding="10">-->
+<!--        <tr>-->
+<!--            <th>Lawyer Name</th>-->
+<!--            <th>Email</th>-->
+<!--            <th>Phone Number</th>-->
+<!--            <th>Age</th>-->
+<!--            <th>Gender</th>-->
+<!--            <th>DOB</th>-->
+<!--            <th>Address</th>-->
+<!--            <th>Qualification</th>-->
+<!--            <th>Lawyer Category</th>-->
+<!--            <th>User Name</th>-->
+<!--            <th>Password</th>-->
+<!--            <th>Photo</th>-->
+
+<!--        </tr>-->
+<!--{% for i in uv %}-->
+<!--        <tr>-->
+<!--            <td>{{ i.full_name }}</td>-->
+<!--            <td>{{ i.email }}</td>-->
+<!--            <td>{{ i.phone_number }}</td>-->
+<!--            <td>{{ i.age }}</td>-->
+<!--            <td>{{ i.gender }}</td>-->
+<!--            <td>{{ i.dob }}</td>-->
+<!--            <td>{{ i.address }}</td>-->
+<!--            <td>{{ i.lawyer_qualification }}</td>-->
+<!--            <td>{{ i.lawyer_category }}</td>-->
+<!--            <td>{{ i.user_name }}</td>-->
+<!--            <td>{{ i.password }}</td>-->
+<!--            <td>{{ i.photo }}</td>-->
+
+<!--        </tr>-->
+<!--{% endfor %}-->
+<!--    </table>-->
+<!--</center>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--default-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Advocate.NOW | Lawyer Profiles</title>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--<style>-->
+<!--* { box-sizing: border-box; margin: 0; padding: 0; }-->
+
+<!--body {-->
+<!--    font-family: "Segoe UI", Arial, sans-serif;-->
+<!--    min-height: 100vh;-->
+<!--    background:-->
+<!--        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),-->
+<!--        url("https://images.unsplash.com/photo-1521791136064-7986c2920216");-->
+<!--    background-size: cover;-->
+<!--    background-position: center;-->
+<!--    color: #fff;-->
+<!--    padding: 100px 30px;-->
+<!--}-->
+
+<!--/* BRAND */-->
+<!--.brand-header {-->
+<!--    position: absolute;-->
+<!--    top: 26px;-->
+<!--    left: 36px;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 14px;-->
+<!--}-->
+
+<!--.brand-bar {-->
+<!--    width: 4px;-->
+<!--    height: 38px;-->
+<!--    background: #c9a24d;-->
+<!--}-->
+
+<!--.brand-text {-->
+<!--    font-size: 26px;-->
+<!--    font-weight: 800;-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--}-->
+
+<!--/* GLOBAL ACTIONS */-->
+<!--.global-actions {-->
+<!--    position: absolute;-->
+<!--    top: 30px;-->
+<!--    right: 36px;-->
+<!--    display: flex;-->
+<!--    gap: 14px;-->
+<!--}-->
+
+<!--.home-btn,-->
+<!--.status-btn {-->
+<!--    padding: 10px 16px;-->
+<!--    border-radius: 20px;-->
+<!--    font-size: 13px;-->
+<!--    font-weight: 700;-->
+<!--    text-decoration: none;-->
+<!--    transition: transform 0.2s ease, background 0.25s ease;-->
+<!--}-->
+
+<!--.home-btn {-->
+<!--    background: rgba(255,255,255,0.12);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--.home-btn:hover {-->
+<!--    background: rgba(255,255,255,0.22);-->
+<!--    transform: translateY(-1px);-->
+<!--}-->
+
+<!--.status-btn {-->
+<!--    background: rgba(52,152,219,0.95);-->
+<!--    color: #fff;-->
+<!--}-->
+<!--.status-btn:hover {-->
+<!--    background: #2c80b4;-->
+<!--    transform: translateY(-1px);-->
+<!--}-->
+
+<!--/* TITLE */-->
+<!--.page-title {-->
+<!--    text-align: center;-->
+<!--    font-size: 32px;-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--    margin-bottom: 40px;-->
+<!--}-->
+
+<!--/* GRID */-->
+<!--.profile-grid {-->
+<!--    display: grid;-->
+<!--    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));-->
+<!--    gap: 30px;-->
+<!--    max-width: 1300px;-->
+<!--    margin: auto;-->
+<!--}-->
+
+<!--/* CARD */-->
+<!--.profile-card {-->
+<!--    background: rgba(20,20,20,0.88);-->
+<!--    backdrop-filter: blur(18px);-->
+<!--    border-radius: 22px;-->
+<!--    padding: 28px;-->
+<!--    box-shadow: 0 40px 80px rgba(0,0,0,0.85);-->
+<!--    transition: transform 0.25s ease;-->
+<!--    display: flex;-->
+<!--    flex-direction: column;-->
+<!--}-->
+
+<!--.profile-card:hover {-->
+<!--    transform: translateY(-6px);-->
+<!--}-->
+
+<!--/* HEADER */-->
+<!--.profile-header {-->
+<!--    display: flex;-->
+<!--    gap: 18px;-->
+<!--    margin-bottom: 18px;-->
+<!--}-->
+
+<!--.profile-img {-->
+<!--    width: 90px;-->
+<!--    height: 90px;-->
+<!--    border-radius: 14px;-->
+<!--    object-fit: cover;-->
+<!--    border: 3px solid #c9a24d;-->
+<!--}-->
+
+<!--.profile-name {-->
+<!--    font-size: 20px;-->
+<!--    font-weight: 700;-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--}-->
+
+<!--.profile-category {-->
+<!--    font-size: 13px;-->
+<!--    color: #e0c27a;-->
+<!--    margin-top: 4px;-->
+<!--}-->
+
+<!--/* DETAILS */-->
+<!--.profile-details {-->
+<!--    font-size: 14px;-->
+<!--    line-height: 1.7;-->
+<!--    margin-top: 10px;-->
+<!--}-->
+
+<!--.profile-details span {-->
+<!--    color: #e0c27a;-->
+<!--    font-weight: 600;-->
+<!--}-->
+
+<!--/* CARD ACTION */-->
+<!--.card-action {-->
+<!--    margin-top: auto;-->
+<!--}-->
+
+<!--.book-btn {-->
+<!--    display: block;-->
+<!--    text-align: center;-->
+<!--    padding: 14px;-->
+<!--    border-radius: 24px;-->
+<!--    background: linear-gradient(135deg, #c9a24d, #8b6a3e);-->
+<!--    color: #111;-->
+<!--    font-size: 14px;-->
+<!--    font-weight: 700;-->
+<!--    text-decoration: none;-->
+<!--    transition: filter 0.25s ease, transform 0.2s ease;-->
+<!--}-->
+
+<!--.book-btn:hover {-->
+<!--    filter: brightness(1.08);-->
+<!--    transform: translateY(-1px);-->
+<!--}-->
+
+<!--/* NO DATA */-->
+<!--.no-data {-->
+<!--    grid-column: 1 / -1;-->
+<!--    text-align: center;-->
+<!--    opacity: 0.85;-->
+<!--    font-size: 15px;-->
+<!--}-->
+
+<!--/* RESPONSIVE */-->
+<!--@media (max-width: 600px) {-->
+<!--    body { padding: 80px 16px; }-->
+<!--    .global-actions {-->
+<!--        flex-direction: column;-->
+<!--        right: 16px;-->
+<!--    }-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--&lt;!&ndash; BRAND &ndash;&gt;-->
+<!--<div class="brand-header">-->
+<!--    <div class="brand-bar"></div>-->
+<!--    <div class="brand-text">Advocate.NOW</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; GLOBAL BUTTONS (ONLY ONCE) &ndash;&gt;-->
+<!--<div class="global-actions">-->
+<!--    <a href="/manage_appointment_and_fee/appviewuser/" class="status-btn">-->
+<!--        View Status-->
+<!--    </a>-->
+<!--    <a href="/temp/users/" class="home-btn">-->
+<!--        Home-->
+<!--    </a>-->
+<!--</div>-->
+
+<!--<h2 class="page-title">Available Lawyers</h2>-->
+
+<!--<div class="profile-grid">-->
+
+<!--{% for i in uv %}-->
+<!--    <div class="profile-card">-->
+
+<!--        <div class="profile-header">-->
+<!--            {% if i.photo %}-->
+<!--                <img src="/static/{{ i.photo }}" class="profile-img">-->
+<!--            {% else %}-->
+<!--                <img src="https://via.placeholder.com/90" class="profile-img">-->
+<!--            {% endif %}-->
+
+<!--            <div>-->
+<!--                <div class="profile-name">{{ i.full_name }}</div>-->
+<!--                <div class="profile-category">{{ i.lawyer_category }} Lawyer</div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="profile-details">-->
+<!--            <p><span>Email:</span> {{ i.email }}</p>-->
+<!--            <p><span>Phone:</span> {{ i.phone_number }}</p>-->
+<!--            <p><span>Age:</span> {{ i.age }} | <span>Gender:</span> {{ i.gender }}</p>-->
+<!--            <p><span>DOB:</span> {{ i.dob }}</p>-->
+<!--            <p><span>Qualification:</span> {{ i.lawyer_qualification }}</p>-->
+<!--            <p><span>Office Address:</span> {{ i.address }}</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; PER-LAWYER APPOINTMENT BUTTON &ndash;&gt;-->
+<!--        <div class="card-action">-->
+<!--            <a href="/manage_appointment_and_fee/book_appointment/{{ i.lawyer_id }}"-->
+<!--               class="book-btn">-->
+<!--                Book Appointment-->
+<!--            </a>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--{% empty %}-->
+<!--    <div class="no-data">-->
+<!--        No lawyer profiles available-->
+<!--    </div>-->
+<!--{% endfor %}-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--new-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Lawyer Profiles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className += " js";</script>
+
+<style>
+:root {
+    --void: #050a14;
+    --cyan: #4de3ff;
+    --gold: #e3b95b;
+    --text: #e8eef7;
+    --muted: #8fa1b8;
+    --line: rgba(120,160,210,0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    font-family: "Sora", "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(900px 500px at 15% 5%, rgba(77,227,255,0.14), transparent 60%),
+        radial-gradient(800px 500px at 90% 95%, rgba(227,185,91,0.12), transparent 60%),
+        var(--void);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    color-scheme: dark;
+}
+
+/* ===== Background ===== */
+.floor {
+    position: fixed; left: -25%; right: -25%; bottom: 0; height: 48vh; z-index: 0;
+    background:
+        repeating-linear-gradient(90deg, rgba(77,227,255,0.16) 0 1px, transparent 1px 70px),
+        repeating-linear-gradient(0deg, rgba(77,227,255,0.16) 0 1px, transparent 1px 70px);
+    transform: perspective(420px) rotateX(62deg);
+    transform-origin: bottom;
+    -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+            mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+    animation: flow 4s linear infinite;
+    pointer-events: none;
+}
+@keyframes flow { to { background-position: 0 70px, 0 70px; } }
+
+.glyphs { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.glyphs span {
+    position: fixed; bottom: -40px;
+    font-family: "Fraunces", Georgia, serif; font-size: 28px;
+    color: var(--gold); opacity: 0;
+    animation: drift 14s linear infinite;
+}
+.glyphs span:nth-child(1) { left: 6%;  animation-delay: 0s; }
+.glyphs span:nth-child(2) { left: 28%; animation-delay: 4s; color: var(--cyan); }
+.glyphs span:nth-child(3) { left: 52%; animation-delay: 8s; }
+.glyphs span:nth-child(4) { left: 74%; animation-delay: 2s; color: var(--cyan); }
+.glyphs span:nth-child(5) { left: 92%; animation-delay: 6s; }
+@keyframes drift {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    15% { opacity: .3; } 85% { opacity: .2; }
+    100% { transform: translateY(-105vh) rotate(25deg); opacity: 0; }
+}
+
+/* ===== Top bar ===== */
+.top {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 16px 40px;
+    background: rgba(5,10,20,0.6); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(120,160,210,0.12);
+}
+.logo { font-family: "Fraunces", Georgia, serif; font-size: 25px; color: #fff; text-decoration: none; }
+.logo span { color: var(--gold); }
+.top-actions { display: flex; align-items: center; gap: 22px; }
+
+.status-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; font-size: 13px; font-weight: 500;
+    color: var(--cyan); text-decoration: none;
+    border: 1px solid rgba(77,227,255,0.4); border-radius: 999px; background: rgba(77,227,255,0.07);
+    transition: background .2s, box-shadow .2s;
+}
+.status-btn:hover { background: rgba(77,227,255,0.15); box-shadow: 0 0 20px rgba(77,227,255,0.2); }
+.status-btn svg { width: 15px; height: 15px; stroke: currentColor; }
+
+.home-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 4px 2px; font-size: 13px; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+}
+.home-btn svg { width: 16px; height: 16px; stroke: currentColor; }
+.home-btn:hover { color: var(--text); border-bottom-color: var(--gold); }
+
+/* ===== Page header ===== */
+.wrap { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; }
+
+.head { display: flex; align-items: center; gap: 28px; margin-bottom: 30px; }
+.mini { width: 110px; flex: none; overflow: visible; }
+.mini .beam { transform-origin: 160px 62px; animation: sway 6s ease-in-out infinite; }
+.mini .pan  { animation: unsway 6s ease-in-out infinite; }
+.mini .pan.l { transform-origin: 40px 62px; }
+.mini .pan.r { transform-origin: 280px 62px; }
+@keyframes sway   { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+@keyframes unsway { 0%,100% { transform: rotate(7deg); }  50% { transform: rotate(-7deg); } }
+
+.head h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; }
+.head h1 em { font-style: normal; color: var(--cyan); }
+.head p { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+
+/* ===== Search and filters ===== */
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 14px; }
+.search { position: relative; flex: 1 1 320px; max-width: 460px; }
+.search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; stroke: var(--muted); }
+.search input {
+    width: 100%; padding: 13px 16px 13px 42px; font: inherit; font-size: 14px; color: var(--text);
+    background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 12px;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.search input::placeholder { color: #667891; }
+.search input:focus { outline: none; border-color: var(--cyan); background: rgba(77,227,255,0.06); box-shadow: 0 0 0 4px rgba(77,227,255,0.14), 0 0 24px rgba(77,227,255,0.16); }
+
+.count { font-size: 13px; color: var(--muted); }
+.count b { color: var(--gold); font-weight: 600; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+.chip {
+    font: inherit; font-size: 13px; color: var(--text); cursor: pointer;
+    padding: 8px 15px; border-radius: 999px;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--line);
+    transition: border-color .2s, background .2s, color .2s;
+}
+.chip:hover { border-color: rgba(227,185,91,0.6); }
+.chip.on { color: var(--gold); border-color: var(--gold); background: rgba(227,185,91,0.12); font-weight: 600; }
+
+/* ===== Cards ===== */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 26px; }
+
+.card {
+    display: flex; flex-direction: column;
+    padding: 26px; border-radius: 20px; border: 1px solid transparent;
+    background:
+        linear-gradient(rgba(10,17,33,0.84), rgba(10,17,33,0.84)) padding-box,
+        linear-gradient(135deg, rgba(77,227,255,0.5), rgba(255,255,255,0.07) 45%, rgba(227,185,91,0.5)) border-box;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    transition: transform .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 40px rgba(77,227,255,0.12); }
+.card.hide { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .25s; }
+    .js .reveal.in { opacity: 1; transform: none; }
+    .js .reveal.in:hover { transform: translateY(-6px); }
+}
+
+.who { display: flex; gap: 16px; align-items: center; margin-bottom: 18px; }
+.avatar {
+    flex: none; width: 84px; height: 84px; border-radius: 16px; object-fit: cover;
+    border: 2px solid var(--gold); box-shadow: 0 0 22px rgba(227,185,91,0.25);
+}
+.initial {
+    display: grid; place-items: center; font-family: "Fraunces", Georgia, serif; font-size: 34px; color: var(--gold);
+    background: rgba(227,185,91,0.1);
+}
+.name { font-family: "Fraunces", Georgia, serif; font-size: 20px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.badge {
+    display: inline-block; margin-top: 8px; padding: 4px 11px; font-size: 12px; font-weight: 500;
+    color: var(--cyan); background: rgba(77,227,255,0.1); border: 1px solid rgba(77,227,255,0.3); border-radius: 999px;
+}
+
+.rows { display: grid; gap: 10px; margin-bottom: 22px; }
+.row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; font-size: 13.5px; line-height: 1.5; }
+.row dt { color: var(--muted); }
+.row dd { color: var(--text); overflow-wrap: anywhere; }
+.row a { color: var(--text); text-decoration: none; border-bottom: 1px dotted rgba(227,185,91,0.6); }
+.row a:hover { color: var(--gold); }
+
+.action { margin-top: auto; }
+.book {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px; font-size: 14px; font-weight: 600; color: #1a1300; text-decoration: none;
+    border-radius: 10px; background: linear-gradient(135deg, var(--gold), #f3d58b 50%, var(--gold)); background-size: 200% 100%;
+    transition: box-shadow .25s, background-position .4s;
+}
+.book:hover { box-shadow: 0 0 26px rgba(227,185,91,0.5); background-position: 100% 0; }
+.book svg { width: 16px; height: 16px; stroke: currentColor; transition: transform .2s; }
+.book:hover svg { transform: translateX(4px); }
+
+.none { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 50px 0; font-size: 15px; }
+#noMatch { display: none; }
+
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+    .top { padding: 12px 16px; }
+    .top-actions { gap: 12px; }
+    .status-btn { padding: 8px 12px; }
+    .wrap { padding: 28px 16px 60px; }
+    .head { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .mini { width: 80px; }
+    .grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .glyphs { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="floor" aria-hidden="true"></div>
+<div class="glyphs" aria-hidden="true"><span>&sect;</span><span>&para;</span><span>&sect;</span><span>&para;</span><span>&sect;</span></div>
+
+<header class="top">
+    <a href="/temp/users/" class="logo">Advocate<span>.</span>NOW</a>
+    <nav class="top-actions">
+        <a href="/manage_appointment_and_fee/appviewuser/" class="status-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            View status
+        </a>
+        <a href="/temp/users/" class="home-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
+            Home
+        </a>
+    </nav>
+</header>
+
+<div class="wrap">
+
+    <div class="head">
+        <svg class="mini" viewBox="0 0 320 240" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <g stroke="#e3b95b" stroke-width="5">
+                <path d="M120 232h80M135 232v-12h50v12M160 220V62"/>
+                <g class="beam">
+                    <path d="M40 62h240"/>
+                    <g class="pan l"><path stroke="#4de3ff" stroke-width="3" d="M40 62L8 150M40 62L72 150"/><path stroke="#4de3ff" d="M2 150h76c0 26-17 38-38 38S2 176 2 150z" fill="rgba(77,227,255,0.14)"/></g>
+                    <g class="pan r"><path stroke="#4de3ff" stroke-width="3" d="M280 62l-32 88M280 62l32 88"/><path stroke="#4de3ff" d="M242 150h76c0 26-17 38-38 38s-38-12-38-38z" fill="rgba(77,227,255,0.14)"/></g>
+                </g>
+                <circle cx="160" cy="48" r="11" fill="#050a14"/><circle cx="160" cy="62" r="5" fill="#e3b95b"/>
+            </g>
+        </svg>
+        <div>
+            <h1>Available <em>lawyers</em></h1>
+            <p>Browse verified advocates and book an appointment in a few clicks.</p>
+        </div>
+    </div>
+
+    <div class="tools">
+        <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" id="q" placeholder="Search by name, practice area, qualification or city" aria-label="Search lawyers" autocomplete="off">
+        </div>
+        <div class="count" id="count" aria-live="polite"></div>
+    </div>
+
+    <div class="chips" id="chips" role="group" aria-label="Filter by practice area"></div>
+
+    <div class="grid" id="grid">
+    {% for i in uv %}
+        <article class="card" data-cat="{{ i.lawyer_category }}" data-search="{{ i.full_name }} {{ i.lawyer_category }} {{ i.lawyer_qualification }} {{ i.address }}">
+
+            <div class="who">
+                {% if i.photo %}
+                    <img src="/static/{{ i.photo }}" class="avatar" alt="{{ i.full_name }}" onerror="this.outerHTML='<div class=&quot;avatar initial&quot;>'+this.alt.charAt(0)+'</div>'">
+                {% else %}
+                    <div class="avatar initial">{{ i.full_name|slice:":1" }}</div>
+                {% endif %}
+                <div>
+                    <div class="name">{{ i.full_name }}</div>
+                    <span class="badge">{{ i.lawyer_category }} Lawyer</span>
+                </div>
+            </div>
+
+            <dl class="rows">
+                <div class="row"><dt>Qualification</dt><dd>{{ i.lawyer_qualification }}</dd></div>
+                <div class="row"><dt>Email</dt><dd><a href="mailto:{{ i.email }}">{{ i.email }}</a></dd></div>
+                <div class="row"><dt>Phone</dt><dd><a href="tel:{{ i.phone_number }}">{{ i.phone_number }}</a></dd></div>
+                <div class="row"><dt>Age</dt><dd>{{ i.age }}</dd></div>
+                <div class="row"><dt>Gender</dt><dd>{{ i.gender }}</dd></div>
+                <div class="row"><dt>Date of birth</dt><dd>{{ i.dob }}</dd></div>
+                <div class="row"><dt>Office</dt><dd>{{ i.address }}</dd></div>
+            </dl>
+
+            <div class="action">
+                <a href="/manage_appointment_and_fee/book_appointment/{{ i.lawyer_id }}" class="book">
+                    Book appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+        </article>
+    {% empty %}
+        <div class="none">No lawyer profiles available</div>
+    {% endfor %}
+        <div class="none" id="noMatch">No lawyers match your search. Try a different word or choose “All”.</div>
+    </div>
+
+</div>
+
+<script>
+const cards = Array.from(document.querySelectorAll(".card"));
+const q = document.getElementById("q");
+const chipsBox = document.getElementById("chips");
+const countEl = document.getElementById("count");
+const noMatch = document.getElementById("noMatch");
+let activeCat = "all";
+
+/* practice-area chips are built from the lawyers on the page */
+const cats = Array.from(new Set(cards.map(function (c) { return c.dataset.cat.trim(); }).filter(Boolean))).sort();
+function makeChip(label, value) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip" + (value === "all" ? " on" : "");
+    b.textContent = label; b.dataset.cat = value;
+    b.addEventListener("click", function () {
+        activeCat = value;
+        chipsBox.querySelectorAll(".chip").forEach(function (c) { c.classList.toggle("on", c === b); });
+        apply();
+    });
+    chipsBox.appendChild(b);
+}
+if (cards.length) { makeChip("All", "all"); cats.forEach(function (c) { makeChip(c, c); }); }
+
+function apply() {
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(function (c) {
+        const okCat = activeCat === "all" || c.dataset.cat.trim() === activeCat;
+        const okTxt = !term || c.dataset.search.toLowerCase().indexOf(term) !== -1;
+        const show = okCat && okTxt;
+        c.classList.toggle("hide", !show);
+        if (show) { shown++; c.classList.add("in"); }
+    });
+    countEl.innerHTML = cards.length ? "Showing <b>" + shown + "</b> of " + cards.length + " lawyers" : "";
+    noMatch.style.display = cards.length && shown === 0 ? "block" : "none";
+}
+q.addEventListener("input", apply);
+apply();
+
+/* cards fade in as they scroll into view */
+cards.forEach(function (c) { c.classList.add("reveal"); });
+if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function (entries) {
+        let n = 0;
+        entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            en.target.style.transitionDelay = (n++ * 80) + "ms";
+            en.target.classList.add("in");
+            io.unobserve(en.target);
+            setTimeout(function () { en.target.style.transitionDelay = ""; }, 900);
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+    cards.forEach(function (c) { io.observe(c); });
+} else {
+    cards.forEach(function (c) { c.classList.add("in"); });
+}
+</script>
+</body>
+</html>

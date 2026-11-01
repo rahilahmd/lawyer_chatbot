@@ -1,0 +1,720 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--	-->
+<!--	<title>LOGIN</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	<form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--		<center>-->
+<!--			<table>-->
+<!--				<tr>-->
+<!--					<td>USERNAME</td>-->
+<!--					<td><input type="text" name="username"></td>-->
+<!--				</tr>-->
+<!--				<tr>-->
+<!--					<td>PASSWORD</td>-->
+<!--					<td><input type="text" name="password"></td>-->
+<!--				</tr>-->
+
+<!--				<tr>-->
+<!--			-->
+<!--					<td><input type="submit" value="LOGIN"></td>-->
+<!--				</tr>-->
+
+<!--			</table>-->
+<!--		</center>-->
+<!--		-->
+<!--	</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--seond-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Advocate.NOW | Login</title>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--<style>-->
+<!--/* ===== Reset ===== */-->
+<!--* {-->
+<!--    box-sizing: border-box;-->
+<!--    margin: 0;-->
+<!--    padding: 0;-->
+<!--}-->
+
+<!--/* ===== Body Background ===== */-->
+<!--body.library-theme {-->
+<!--    min-height: 100vh;-->
+<!--    font-family: "Segoe UI", Arial, sans-serif;-->
+<!--    background:-->
+<!--        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),-->
+<!--        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");-->
+<!--    background-size: cover;-->
+<!--    background-position: center;-->
+<!--    display: flex;-->
+<!--    justify-content: center;-->
+<!--    align-items: center;-->
+<!--    color: #ffffff;-->
+<!--}-->
+
+
+<!--/* ===== Login Card (Standard Glass) ===== */-->
+<!--.login-card {-->
+<!--    width: 380px;-->
+<!--    padding: 40px;-->
+<!--    background: rgba(25, 25, 25, 0.75);-->
+<!--    backdrop-filter: blur(16px);-->
+<!--    border-radius: 16px;-->
+<!--    border: 1px solid rgba(255,255,255,0.15);-->
+<!--    box-shadow: 0 30px 80px rgba(0,0,0,0.8);-->
+<!--}-->
+
+<!--/* ===== Title ===== */-->
+<!--.login-card h2 {-->
+<!--    text-align: center;-->
+<!--    margin-bottom: 28px;-->
+<!--    font-family: "Times New Roman", serif;-->
+<!--    font-size: 20px;-->
+<!--    letter-spacing: 1px;-->
+<!--    text-transform: uppercase;-->
+<!--}-->
+
+<!--/* ===== Form ===== */-->
+<!--label {-->
+<!--    font-size: 13px;-->
+<!--    margin-bottom: 6px;-->
+<!--    display: block;-->
+<!--    opacity: 0.9;-->
+<!--}-->
+
+<!--input {-->
+<!--    width: 100%;-->
+<!--    padding: 12px 14px;-->
+<!--    margin-bottom: 18px;-->
+<!--    font-size: 14px;-->
+<!--    border-radius: 8px;-->
+<!--    background: rgba(255,255,255,0.12);-->
+<!--    border: 1px solid rgba(255,255,255,0.25);-->
+<!--    color: #ffffff;-->
+<!--}-->
+
+<!--input::placeholder {-->
+<!--    color: rgba(255,255,255,0.6);-->
+<!--}-->
+
+<!--input:focus {-->
+<!--    outline: none;-->
+<!--    border-color: #c9a24d;-->
+<!--    background: rgba(255,255,255,0.16);-->
+<!--}-->
+
+<!--/* ===== Forgot ===== */-->
+<!--.forgot {-->
+<!--    text-align: right;-->
+<!--    font-size: 12px;-->
+<!--    margin-bottom: 22px;-->
+<!--}-->
+
+<!--.forgot a {-->
+<!--    color: #e0c27a;-->
+<!--    text-decoration: none;-->
+<!--}-->
+<!--/* HOME ICON (INSIDE CARD) */-->
+<!--.home-icon {-->
+<!--    position: absolute;-->
+<!--    top: 24px;-->
+<!--    right: 28px;-->
+<!--    font-size: 20px;-->
+<!--    font-weight: 700;-->
+<!--    text-decoration: none;-->
+<!--    color: rgba(255,255,255,0.85);-->
+<!--    transition: color 0.25s ease, transform 0.2s ease;-->
+<!--    z-index: 5;-->
+<!--}-->
+
+<!--.home-icon:hover {-->
+<!--    color: #e0c27a;-->
+<!--    transform: translateY(-1px);-->
+<!--}-->
+
+<!--/* ===== Button ===== */-->
+<!--.btn {-->
+<!--    width: 100%;-->
+<!--    padding: 13px;-->
+<!--    border-radius: 8px;-->
+<!--    border: none;-->
+<!--    font-size: 15px;-->
+<!--    font-weight: 600;-->
+<!--    cursor: pointer;-->
+<!--    background: linear-gradient(135deg, #c3a35f, #8b6a3e);-->
+<!--    color: #111;-->
+<!--}-->
+
+<!--.btn:hover {-->
+<!--    filter: brightness(1.05);-->
+<!--}-->
+
+<!--/* ===== Footer ===== */-->
+<!--.footer-text {-->
+<!--    margin-top: 24px;-->
+<!--    text-align: center;-->
+<!--    font-size: 12px;-->
+<!--    opacity: 0.85;-->
+<!--}-->
+
+<!--.footer-text a {-->
+<!--    color: #e0c27a;-->
+<!--    font-weight: 600;-->
+<!--    text-decoration: none;-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+
+<!--<body class="library-theme">-->
+
+<!--<div class="login-card">-->
+<!--    <a href="/" class="home-icon" title="Home">⌂</a>-->
+<!--    <h2>Member Login</h2>-->
+
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+
+<!--        <label for="username">Username</label>-->
+<!--        <input id="username" type="text" name="username" placeholder="Enter username" required>-->
+
+<!--        <label for="password">Password</label>-->
+<!--        <input id="password" type="password" name="password" placeholder="Enter password" required>-->
+
+<!--        <div class="forgot">-->
+<!--            <a href="#">Forgot password?</a>-->
+<!--        </div>-->
+
+<!--        <button type="submit" class="btn">Sign In</button>-->
+<!--    </form>-->
+
+<!--    <div class="footer-text">-->
+<!--        Don’t have an account? <a href="/login/reg/">Register for free</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--new-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --void: #050a14;
+    --cyan: #4de3ff;
+    --gold: #e3b95b;
+    --text: #e8eef7;
+    --muted: #8fa1b8;
+    --line: rgba(120,160,210,0.22);
+    --error: #ff7b7b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    font-family: "Sora", "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(900px 500px at 15% 10%, rgba(77,227,255,0.14), transparent 60%),
+        radial-gradient(800px 500px at 90% 90%, rgba(227,185,91,0.12), transparent 60%),
+        var(--void);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== Moving grid floor ===== */
+.floor {
+    position: fixed;
+    left: -25%; right: -25%; bottom: 0;
+    height: 48vh;
+    background:
+        repeating-linear-gradient(90deg, rgba(77,227,255,0.22) 0 1px, transparent 1px 70px),
+        repeating-linear-gradient(0deg, rgba(77,227,255,0.22) 0 1px, transparent 1px 70px);
+    transform: perspective(420px) rotateX(62deg);
+    transform-origin: bottom;
+    -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+            mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+    animation: flow 4s linear infinite;
+    pointer-events: none;
+}
+@keyframes flow { to { background-position: 0 70px, 0 70px; } }
+
+/* ===== Drifting legal symbols ===== */
+.glyphs span {
+    position: fixed;
+    bottom: -40px;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 28px;
+    color: var(--gold);
+    opacity: 0;
+    animation: drift 14s linear infinite;
+    pointer-events: none;
+}
+.glyphs span:nth-child(1) { left: 6%;  animation-delay: 0s; }
+.glyphs span:nth-child(2) { left: 22%; animation-delay: 3s;  color: var(--cyan); }
+.glyphs span:nth-child(3) { left: 46%; animation-delay: 6s; }
+.glyphs span:nth-child(4) { left: 63%; animation-delay: 9s;  color: var(--cyan); }
+.glyphs span:nth-child(5) { left: 81%; animation-delay: 2s; }
+.glyphs span:nth-child(6) { left: 93%; animation-delay: 7s;  color: var(--cyan); }
+@keyframes drift {
+    0%   { transform: translateY(0) rotate(0); opacity: 0; }
+    15%  { opacity: .35; }
+    85%  { opacity: .25; }
+    100% { transform: translateY(-105vh) rotate(25deg); opacity: 0; }
+}
+
+/* ===== Hero (left) ===== */
+.hero {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    z-index: 1;
+    padding: 48px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.logo {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+.logo span { color: var(--gold); }
+
+.scales { width: min(360px, 80%); height: auto; overflow: visible; }
+
+.hero h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(32px, 3.6vw, 50px);
+    line-height: 1.1;
+    margin-top: 12px;
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span { display: block; animation: reveal .9s cubic-bezier(.2,.8,.2,1) both; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .15s; color: var(--cyan); }
+
+.hero p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 40ch;
+    margin-top: 10px;
+    animation: fadein 1s .5s both;
+}
+
+@keyframes reveal { from { transform: translateY(110%); } to { transform: none; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Scales of justice animation ===== */
+.scales .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.6s ease-out forwards; }
+.scales .beam { transform-origin: 160px 62px; animation: sway 6s ease-in-out 1.4s infinite; }
+.scales .pan  { animation: unsway 6s ease-in-out 1.4s infinite; }
+.scales .pan.l { transform-origin: 40px 62px; }
+.scales .pan.r { transform-origin: 280px 62px; }
+.scales .pulse { animation: glow 3s ease-in-out infinite; }
+
+@keyframes draw  { to { stroke-dashoffset: 0; } }
+@keyframes sway   { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+@keyframes unsway { 0%,100% { transform: rotate(7deg); }  50% { transform: rotate(-7deg); } }
+@keyframes glow   { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+/* ===== Form card (right) ===== */
+.panel {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 48px 32px;
+}
+
+.home-btn {
+    position: fixed;
+    top: 26px; right: 32px;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 2px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+}
+.home-btn svg { width: 16px; height: 16px; stroke: currentColor; }
+.home-btn:hover { color: var(--text); border-bottom-color: var(--gold); text-decoration: none; }
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 38px 34px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background:
+        linear-gradient(rgba(10,17,33,0.82), rgba(10,17,33,0.82)) padding-box,
+        linear-gradient(135deg, rgba(77,227,255,0.65), rgba(255,255,255,0.08) 45%, rgba(227,185,91,0.65)) border-box;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    animation: rise .8s .3s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+.login-card h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.sub { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255,123,123,0.1);
+    color: var(--error);
+    border: 1px solid rgba(255,123,123,0.4);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+.alert svg { flex: none; width: 18px; height: 18px; margin-top: 1px; stroke: currentColor; }
+.alert .alert-link { display: inline-block; margin-top: 6px; color: var(--gold); font-weight: 600; }
+.alert.success { color: #6ee7a8; background: rgba(110,231,168,0.1); border-color: rgba(110,231,168,0.4); }
+.alert.pending { color: var(--gold); background: rgba(227,185,91,0.1); border-color: rgba(227,185,91,0.4); }
+.alert.pending svg { animation: pop .4s 1.4s both, wait 2s 1.9s ease-in-out infinite; }
+@keyframes wait { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+.alert.noacct  { color: var(--gold); background: rgba(227,185,91,0.1); border-color: rgba(227,185,91,0.4); }
+
+/* ===== Wrong password / unknown account feedback ===== */
+.alert { animation: slidein .5s 1.1s both; }
+.alert svg { animation: pop .4s 1.4s both; }
+
+.login-card.error {
+    animation:
+        rise .8s .3s cubic-bezier(.2,.8,.2,1) both,
+        shake .6s 1.1s cubic-bezier(.36,.07,.19,.97),
+        flash 1.4s 1.1s;
+}
+.login-card.error.noacct { animation-name: rise, shake, flashgold; }
+
+input.bad, input.bad:focus {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(255,123,123,0.14);
+}
+
+.scales.denied .beam { animation: deny 1.2s 1.2s ease-out both, sway 6s ease-in-out 2.6s infinite; }
+.scales.denied .pan  { animation: undeny 1.2s 1.2s ease-out both, unsway 6s ease-in-out 2.6s infinite; }
+
+@keyframes slidein { from { opacity: 0; transform: translateY(-10px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes pop     { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+@keyframes shake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(5px); }
+    30%, 50%, 70% { transform: translateX(-9px); }
+    40%, 60% { transform: translateX(9px); }
+}
+@keyframes flash {
+    0%, 100% { box-shadow: 0 30px 80px rgba(0,0,0,0.55); }
+    30% { box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 60px rgba(255,123,123,0.4); }
+}
+@keyframes flashgold {
+    0%, 100% { box-shadow: 0 30px 80px rgba(0,0,0,0.55); }
+    30% { box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 60px rgba(227,185,91,0.4); }
+}
+@keyframes deny   { 0% { transform: rotate(0); }  25% { transform: rotate(-18deg); } 45% { transform: rotate(-9deg); }  65% { transform: rotate(-14deg); } 100% { transform: rotate(-7deg); } }
+@keyframes undeny { 0% { transform: rotate(0); }  25% { transform: rotate(18deg); }  45% { transform: rotate(9deg); }   65% { transform: rotate(14deg); }  100% { transform: rotate(7deg); } }
+
+label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 7px; color: #c7d3e3; }
+
+.field { position: relative; margin-bottom: 18px; }
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 13px 15px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+input::placeholder { color: #667891; }
+input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: rgba(77,227,255,0.06);
+    box-shadow: 0 0 0 4px rgba(77,227,255,0.14), 0 0 24px rgba(77,227,255,0.18);
+}
+#password { padding-right: 68px; }
+
+.toggle {
+    position: absolute;
+    right: 8px; bottom: 7px;
+    padding: 6px 10px;
+    font: inherit; font-size: 12px; font-weight: 500;
+    color: var(--cyan);
+    background: none; border: none; border-radius: 6px;
+    cursor: pointer;
+}
+.toggle:hover { background: rgba(77,227,255,0.1); }
+
+.forgot { text-align: right; font-size: 12px; margin: -4px 0 24px; }
+
+a { color: var(--gold); font-weight: 500; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.btn {
+    position: relative;
+    width: 100%;
+    padding: 14px;
+    font: inherit; font-size: 15px; font-weight: 600;
+    color: #1a1300;
+    background: linear-gradient(135deg, var(--gold), #f3d58b 50%, var(--gold));
+    background-size: 200% 100%;
+    border: none; border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow .25s, transform .1s;
+}
+.btn:hover { box-shadow: 0 0 28px rgba(227,185,91,0.5); background-position: 100% 0; }
+.btn:active { transform: translateY(1px); }
+
+a:focus-visible, .btn:focus-visible, .toggle:focus-visible, .home-btn:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.footer-text { margin-top: 24px; text-align: center; font-size: 13px; color: var(--muted); }
+
+/* ===== Gavel strike on sign in ===== */
+.verdict {
+    position: fixed; inset: 0;
+    display: grid; place-items: center;
+    background: rgba(5,10,20,0.72);
+    backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    z-index: 20;
+}
+.verdict.on { opacity: 1; pointer-events: auto; transition: opacity .2s; }
+.verdict svg { width: 220px; overflow: visible; }
+.gavel { transform-origin: 40px 150px; transform: rotate(-55deg); }
+.verdict.on .gavel { animation: strike .55s cubic-bezier(.5,0,.9,.4) forwards; }
+.ring { fill: none; stroke: var(--gold); stroke-width: 3; opacity: 0; transform-origin: 140px 190px; }
+.verdict.on .ring { animation: shock .6s .42s ease-out forwards; }
+.verdict.on .ring.two { animation-delay: .52s; stroke: var(--cyan); }
+.verdict p { position: absolute; margin-top: 220px; font-family: "Fraunces", Georgia, serif; font-size: 22px; color: var(--gold); opacity: 0; }
+.verdict.on p { animation: fadein .4s .45s forwards; }
+
+@keyframes strike { to { transform: rotate(8deg); } }
+@keyframes shock  { from { opacity: .9; transform: scale(.2); } to { opacity: 0; transform: scale(3.4); } }
+
+/* ===== Responsive ===== */
+@media (max-width: 760px) {
+    body { grid-template-columns: 1fr; align-items: start; }
+    .hero, .panel { grid-column: 1; grid-row: auto; }
+    .home-btn { top: 18px; right: 20px; }
+    .hero { padding: 28px 24px 0; align-items: center; text-align: center; }
+    .scales { width: 150px; }
+    .hero h1, .hero p { display: none; }
+    .panel { padding: 16px 20px 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .scales .draw { stroke-dashoffset: 0; }
+    .glyphs { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="floor" aria-hidden="true"></div>
+<div class="glyphs" aria-hidden="true"><span>&sect;</span><span>&para;</span><span>&sect;</span><span>&para;</span><span>&sect;</span><span>&para;</span></div>
+
+<a href="/" class="home-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg>
+    Home
+</a>
+
+<section class="hero">
+    <a href="/" class="logo">Advocate<span>.</span>NOW</a>
+
+    <svg class="scales" viewBox="0 0 320 300" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g stroke="#e3b95b" stroke-width="3">
+            <path class="draw" d="M120 285h80M135 285v-12h50v12M160 273V62"/>
+            <g class="beam">
+                <path class="draw" d="M40 62h240"/>
+                <g class="pan l">
+                    <path stroke="#4de3ff" stroke-width="1.5" d="M40 62L8 170M40 62L72 170"/>
+                    <path class="pulse" stroke="#4de3ff" d="M2 170h76c0 26-17 38-38 38S2 196 2 170z" fill="rgba(77,227,255,0.12)"/>
+                </g>
+                <g class="pan r">
+                    <path stroke="#4de3ff" stroke-width="1.5" d="M280 62l-32 108M280 62l32 108"/>
+                    <path class="pulse" stroke="#4de3ff" d="M242 170h76c0 26-17 38-38 38s-38-12-38-38z" fill="rgba(77,227,255,0.12)"/>
+                </g>
+            </g>
+            <circle cx="160" cy="48" r="11" fill="#050a14"/>
+            <circle cx="160" cy="62" r="4" fill="#e3b95b"/>
+        </g>
+    </svg>
+
+    <h1>
+        <span class="line"><span>Justice, made</span></span>
+        <span class="line"><span>instant.</span></span>
+    </h1>
+    <p>Track complaints, hearing dates and appointments from one secure place.</p>
+</section>
+
+<main class="panel">
+    <div class="login-card">
+        <h2>Counsel login</h2>
+        <p class="sub">Sign in to continue your case.</p>
+
+        {% if m %}
+            <div class="alert {{ kind }}" role="alert">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+                <span class="alert-text">{{ m }}</span>
+            </div>
+        {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg><span class="alert-text">{{ message }}</span></div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" id="loginForm">
+            {% csrf_token %}
+
+            <div class="field">
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" placeholder="Enter your username" autocomplete="username" required>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                <button type="button" class="toggle" id="toggle" aria-controls="password">Show</button>
+            </div>
+
+            <div class="forgot"><a href="#">Forgot password?</a></div>
+
+            <button type="submit" class="btn">Sign in</button>
+        </form>
+
+        <div class="footer-text">
+            New here? <a href="/login/reg/">Create a free account</a>
+        </div>
+    </div>
+</main>
+
+<div class="verdict" id="verdict" aria-hidden="true">
+    <svg viewBox="0 0 280 240" fill="none">
+        <circle class="ring" cx="140" cy="190" r="30"/>
+        <circle class="ring two" cx="140" cy="190" r="30"/>
+        <ellipse cx="140" cy="200" rx="70" ry="10" fill="#e3b95b" opacity=".25"/>
+        <g class="gavel">
+            <rect x="35" y="30" width="10" height="130" rx="5" fill="#b8893b"/>
+            <rect x="8" y="6" width="64" height="30" rx="8" fill="#e3b95b"/>
+        </g>
+    </svg>
+    <p>Order! Signing you in…</p>
+</div>
+
+<script>
+    const pw = document.getElementById("password");
+    const toggle = document.getElementById("toggle");
+    toggle.addEventListener("click", function () {
+        const show = pw.type === "password";
+        pw.type = show ? "text" : "password";
+        toggle.textContent = show ? "Hide" : "Show";
+    });
+
+    const form = document.getElementById("loginForm");
+    const verdict = document.getElementById("verdict");
+    let struck = false;
+    form.addEventListener("submit", function (e) {
+        if (struck || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        e.preventDefault();
+        struck = true;
+        verdict.classList.add("on");
+        setTimeout(function () { form.submit(); }, 1100);
+    });
+
+    // Wrong password / account not registered
+    const alerts = Array.from(document.querySelectorAll(".alert"));
+    const failed = alerts.filter(function (a) { return !a.classList.contains("success") && !a.classList.contains("pending"); });
+    if (failed.length) {
+        const card = document.querySelector(".login-card");
+        const uname = document.getElementById("username");
+        card.classList.add("error");
+        document.querySelector(".scales").classList.add("denied");
+
+        const noAccount = failed.some(function (a) {
+            return a.classList.contains("noacct") || a.classList.contains("no_account") ||
+                /not\s+(registered|found)|no\s+account|not\s+exist|doesn.?t\s+exist|register/i.test(a.textContent);
+        });
+
+        if (noAccount) {
+            card.classList.add("noacct");
+            const a = failed[0];
+            a.classList.add("noacct");
+            const link = document.createElement("a");
+            link.href = "/login/reg/";
+            link.className = "alert-link";
+            link.textContent = "Create an account \u2192";
+            a.querySelector(".alert-text").appendChild(document.createElement("br"));
+            a.querySelector(".alert-text").appendChild(link);
+            uname.classList.add("bad");
+            uname.focus();
+        } else {
+            pw.classList.add("bad");
+            pw.focus();
+        }
+
+        [uname, pw].forEach(function (i) {
+            i.addEventListener("input", function () { i.classList.remove("bad"); });
+        });
+    }
+</script>
+
+</body>
+</html>

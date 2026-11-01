@@ -1,0 +1,292 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>View Appointment</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<center>-->
+<!--    <table border="1" cellpadding="10">-->
+<!--        <tr>-->
+<!--            <th>Full Name</th>-->
+<!--            <th>Phone Number</th>-->
+<!--            <th>Email</th>-->
+<!--            <th>Case Summary</th>-->
+<!--            <th>Service Type</th>-->
+<!--            <th>Lawyer Name</th>-->
+<!--            <th>Appointment Time</th>-->
+<!--            <th>Appointment Date</th>-->
+<!--            <th>User Name</th>-->
+<!--            <th>Actions</th>-->
+<!--            <th>status</th>-->
+<!--        </tr>-->
+<!--{% for i in wp %}-->
+<!--        <tr>-->
+<!--            <td>{{ i.full_name }}</td>-->
+<!--            <td>{{ i.phone_number }}</td>-->
+<!--            <td>{{ i.email }}</td>-->
+<!--            <td>{{ i.case_summary }}</td>-->
+<!--            <td>{{ i.service_type }}</td>-->
+<!--            <td>{{ i.lawyer_id }}</td>-->
+<!--            <td>{{ i.appointment_time }}</td>-->
+<!--            <td>{{ i.appointment_date }}</td>-->
+<!--            <td>{{ i.user_id }}</td>-->
+<!--             <td><a href="/manage_appointment_and_fee/accep/{{ i.appointment_id }}">accepted</a> <br>-->
+<!--                <a href="/manage_appointment_and_fee/rejec/{{ i.appointment_id }}">rejected</a>-->
+<!--            </td>-->
+<!--            <td>{{ i.status }}</td>-->
+<!--        </tr>-->
+<!--{% endfor %}-->
+<!--    </table>-->
+<!--</center>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advocate.NOW | View Appointments</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url("/static/assets/img/bg/appointment.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding-top: 120px;
+}
+
+/* BRAND */
+.brand-header {
+    position: absolute;
+    top: 26px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-bar {
+    width: 4px;
+    height: 38px;
+    background: #c9a24d;
+}
+
+.brand-text {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 20px 60px;
+}
+
+/* HOME */
+.home-icon {
+    position: absolute;
+    top: 30px;
+    right: 36px;
+    font-size: 22px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+}
+.home-icon:hover { color: #e0c27a; }
+
+/* TITLE */
+.container h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: "Times New Roman", serif;
+}
+
+/* GRID */
+.appointment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 26px;
+}
+
+/* CARD */
+.appointment-card {
+    background: rgba(20,20,20,0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* HEADER */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 18px;
+    color: #e0c27a;
+}
+
+/* STATUS */
+.status {
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.pending { background: rgba(241,196,15,0.9); color:#111; }
+.accepted { background: #2ecc71; color:#111; }
+.rejected { background: #e74c3c; color:#fff; }
+
+/* DETAILS */
+.details {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.details span {
+    color: #e0c27a;
+    font-weight: 600;
+}
+
+/* HEARING ACTIONS */
+.hearing-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+/* ACTIONS */
+.actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 8px 16px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.25s ease;
+}
+
+.accept { background: #c9a24d; color:#111; }
+.reject { background: rgba(231,76,60,0.9); color:#fff; }
+.hearing { background: rgba(52,152,219,0.9); color:#fff; }
+.update { background: rgba(155,89,182,0.9); color:#fff; }
+
+.btn:hover { filter: brightness(1.1); }
+
+/* NO DATA */
+.no-data {
+    text-align: center;
+    opacity: 0.8;
+    padding: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .actions,
+    .hearing-actions {
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BRAND -->
+<div class="brand-header">
+    <div class="brand-bar"></div>
+    <div class="brand-text">Advocate.NOW</div>
+</div>
+
+<a href="/temp/lawyers/" class="home-icon">⌂</a>
+
+<div class="container">
+    <h2>Appointments</h2>
+
+    <div class="appointment-grid">
+
+    {% for i in wp %}
+        <div class="appointment-card">
+
+            <div class="card-header">
+                <h3>{{ i.full_name }}</h3>
+                {% if i.status == "accepted" %}
+                    <span class="status accepted">Accepted</span>
+                {% elif i.status == "rejected" %}
+                    <span class="status rejected">Rejected</span>
+                {% else %}
+                    <span class="status pending">Pending</span>
+                {% endif %}
+            </div>
+
+            <div class="details">
+                <p><span>Phone:</span> {{ i.phone_number }}</p>
+                <p><span>Email:</span> {{ i.email }}</p>
+                <p><span>Case:</span> {{ i.case_summary }}</p>
+                <p><span>Service:</span> {{ i.service_type }}</p>
+                <p><span>Lawyer:</span> {{ i.lawyer_id }}</p>
+                <p><span>Date:</span> {{ i.appointment_date }}</p>
+                <p><span>Time:</span> {{ i.appointment_time }}</p>
+                <p><span>User:</span> {{ i.user_id }}</p>
+            </div>
+
+            <!-- HEARING BUTTONS -->
+            <div class="hearing-actions">
+                <a href="/hearing_date/hearing/{{ i.appointment_id }}"
+                   class="btn hearing">
+                    Add Hearing
+                </a>
+
+                <a href="/hearing_date/view_H/{{ i.appointment_id }}"
+                   class="btn update">
+                    View Hearing
+                </a>
+            </div>
+
+            <!-- ACCEPT / REJECT -->
+            <div class="actions">
+                <a href="/manage_appointment_and_fee/accep/{{ i.appointment_id }}"
+                   class="btn accept">Accept</a>
+
+                <a href="/manage_appointment_and_fee/rejec/{{ i.appointment_id }}"
+                   class="btn reject">Reject</a>
+            </div>
+
+        </div>
+    {% empty %}
+        <div class="no-data">
+            No appointments found
+        </div>
+    {% endfor %}
+
+    </div>
+</div>
+
+</body>
+</html>
